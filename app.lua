@@ -2,7 +2,7 @@ wifi.sta.sethostname("uopNodeMCU")
 wifi.setmode(wifi.STATION)
 station_cfg={}
 station_cfg.ssid="TheBarratts" 
-station_cfg.pwd="889F0A7C1D"
+station_cfg.pwd="***"
 station_cfg.save=true
 wifi.sta.config(station_cfg)
 wifi.sta.connect()
@@ -42,7 +42,7 @@ PORT=1883--1883 or 8883(1883 for default TCP, 8883 for encrypted SSL or other wa
 PUBLISH_TOPIC='charliebarratt/feeds/LED1' -- put your topic of publish shown on the IoT platform/broker site
 SUBSCRIBE_TOPIC="charliebarratt/feeds/LED1" -- put your topic of subscribe shown on the IoT platform/broker site
 ADAFRUIT_IO_USERNAME="charliebarratt"--put your own username here
-ADAFRUIT_IO_KEY="aio_mkOR24stbhDvP2LswNfa2BZEI97n"--put your own io_key here
+ADAFRUIT_IO_KEY="***"--put your own io_key here
 -- init mqtt client with logins, keepalive timer 300 seconds
 m=mqtt.Client("Client1",300,ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
 -- setup Last Will and Testament (optional)

@@ -20,7 +20,6 @@ else
     print("RSSI: ",rssi,"\n")
 end 
 
-
 dhtPin=8
 greenpinLED=4
 orangepinLED=0
@@ -40,6 +39,7 @@ ADAFRUIT_IO_USERNAME="charliebarratt"
 ADAFRUIT_IO_KEY="aio_LJrS74spN4vpURj1e7NHZaYfVQK4"
 m=mqtt.Client("Client1",300,ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
 m:lwt("/lwt","Now offline",1,0)
+
 m:on("connect",function(client) 
     print("Client connected") 
     print("MQTT client connected to "..HOST)

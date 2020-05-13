@@ -1,4 +1,4 @@
-# PC-Temperature-using-DHT11-with-MQTT
+# PC Temperature Monitor using DHT11 with MQTT
 
 ## Description
 IoT coursework implementing a PC case temperature checker using DHT11 and publishing results to IO Adafruit MQTT Dashboard to be displayed on a Gauge.

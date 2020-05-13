@@ -1,8 +1,8 @@
 wifi.sta.sethostname("uopNodeMCU")
 wifi.setmode(wifi.STATION)
 station_cfg={}
-station_cfg.ssid="TheBarratts" 
-station_cfg.pwd="889F0A7C1D"
+station_cfg.ssid="***" 
+station_cfg.pwd="***"
 station_cfg.save=true
 wifi.sta.config(station_cfg)
 wifi.sta.connect()
@@ -35,8 +35,8 @@ HOST="io.adafruit.com"
 PORT=1883
 PUBLISH_TOPIC="charliebarratt2/feeds/temp"
 SUBSCRIBE_TOPIC="charliebarratt2/feeds/temp"
-ADAFRUIT_IO_USERNAME="charliebarratt2"
-ADAFRUIT_IO_KEY="aio_JzvN99WAJrpYIo6PN35Vd43oSRyP"
+ADAFRUIT_IO_USERNAME="***"
+ADAFRUIT_IO_KEY="***"
 m=mqtt.Client("Client3",300,ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
 m:lwt("/lwt","Now offline",1,0)
 

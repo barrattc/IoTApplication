@@ -33,19 +33,19 @@ gpio.write(redpinLED,gpio.LOW)
 
 HOST="io.adafruit.com"
 PORT=1883
-PUBLISH_TOPIC='charliebarratt/feeds/LED1'
-SUBSCRIBE_TOPIC="charliebarratt/feeds/LED1"
-ADAFRUIT_IO_USERNAME="charliebarratt"
-ADAFRUIT_IO_KEY="aio_LJrS74spN4vpURj1e7NHZaYfVQK4"
-m=mqtt.Client("Client1",300,ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
+PUBLISH_TOPIC="charliebarratt2/feeds/temp"
+SUBSCRIBE_TOPIC="charliebarratt2/feeds/temp"
+ADAFRUIT_IO_USERNAME="charliebarratt2"
+ADAFRUIT_IO_KEY="aio_JzvN99WAJrpYIo6PN35Vd43oSRyP"
+m=mqtt.Client("Client3",300,ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
 m:lwt("/lwt","Now offline",1,0)
 
 m:on("connect",function(client) 
-    print("Client connected") 
-    print("MQTT client connected to "..HOST)
+print("Client connected") 
+print("MQTT client connected to "..HOST)
     mytimer = tmr.create()
     mytimer:register(5000, 1, function()
-    status, temp, temp_dec = dht.read11(dhtPin) 
+    status, temp, temp_dec = dht.read11(dhtPin)  
     if status == dht.OK then
     pubTemp(client)
        if temp <= 25 then
@@ -64,19 +64,19 @@ m:on("connect",function(client)
          gpio.write(orangepinLED,gpio.LOW)
          gpio.write(redpinLED,gpio.HIGH)
        elseif temp > 50 then
-         print("Temperature too high! Current temperature is "..temp.."°C. Action must be taken to avoid damage to parts")
+         print("TEMPERATURE TOO HIGH! Current temperature is "..temp.."°C. Action must be taken to avoid damage to parts")
          state = 1
          mytimer = tmr.create()
          mytimer:register(1000, 1, function()
              if state == 1 then
                  gpio.write(greenpinLED,gpio.LOW)
                  gpio.write(orangepinLED,gpio.LOW)
-                 gpio.write(redpinLED,gpio.LOW)
+                 gpio.write(redpinLED,gpio.HIGH)
                  state = 0
              else
                  gpio.write(greenpinLED,gpio.LOW)
                  gpio.write(orangepinLED,gpio.LOW)
-                 gpio.write(redpinLED,gpio.HIGH)
+                 gpio.write(redpinLED,gpio.LOW)
                  state = 1
              end
          end)
@@ -89,7 +89,7 @@ m:on("connect",function(client)
     end
     end)
     mytimer:start()
-end)
+end) 
 
 m:on("offline",function(client)
     print("Client offline")
@@ -101,5 +101,5 @@ end)
 
 function pubTemp(client)
     client:publish(PUBLISH_TOPIC,temp,1,0,function(client)end)
-    print("Temp reading sent to MQTT dashboard: ",temp.."°C")
+    print("Temp reading sent to dashboard")
 end
